@@ -1,0 +1,14 @@
+[
+  {
+    "type": "Error|Warning|Info",
+    "title": {
+      "ja": "日本語のタイトル",
+      "en": "The title in English"
+    },
+    "description": {
+      "ja": "<p>日本語の説明文</p>",
+      "en": "<p>This is a description in English</p>"
+    },
+    "to(Optional)": "/terms のような相対リンク"
+  }
+]
