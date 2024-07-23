@@ -1,149 +1,460 @@
 {
-  "versions": [
-    {
-      "majorVersion": 21,
-      "ref": {
-        "type": "minecraft",
-        "version": "java-runtime-delta"
+  "versions": {
+    "21": {
+      "mac": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "java-runtime-delta"
+        },
+        "arm-64": {
+          "type": "minecraft",
+          "version": "java-runtime-delta"
+        }
+      },
+      "windows": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "java-runtime-delta"
+        }
+      },
+      "linux": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "java-runtime-delta"
+        }
       }
     },
-    {
-      "majorVersion": 20,
-      "ref": {
-        "type": "minecraft",
-        "version": "java-runtime-delta"
+    "20": {
+      "mac": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "java-runtime-delta"
+        },
+        "arm-64": {
+          "type": "minecraft",
+          "version": "java-runtime-delta"
+        }
+      },
+      "windows": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "java-runtime-delta"
+        }
+      },
+      "linux": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "java-runtime-delta"
+        }
       }
     },
-    {
-      "majorVersion": 19,
-      "ref": {
-        "type": "minecraft",
-        "version": "java-runtime-delta"
+    "19": {
+      "mac": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "java-runtime-delta"
+        },
+        "arm-64": {
+          "type": "minecraft",
+          "version": "java-runtime-delta"
+        }
+      },
+      "windows": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "java-runtime-delta"
+        }
+      },
+      "linux": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "java-runtime-delta"
+        }
       }
     },
-    {
-      "majorVersion": 18,
-      "ref": {
-        "type": "minecraft",
-        "version": "java-runtime-gamma"
+    "18": {
+      "mac": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "java-runtime-gamma"
+        },
+        "arm-64": {
+          "type": "minecraft",
+          "version": "java-runtime-gamma"
+        }
+      },
+      "windows": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "java-runtime-gamma"
+        }
+      },
+      "linux": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "java-runtime-gamma"
+        }
       }
     },
-    {
-      "majorVersion": 17,
-      "ref": {
-        "type": "minecraft",
-        "version": "java-runtime-gamma"
+    "17": {
+      "mac": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "java-runtime-gamma"
+        },
+        "arm-64": {
+          "type": "minecraft",
+          "version": "java-runtime-gamma"
+        }
+      },
+      "windows": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "java-runtime-gamma"
+        }
+      },
+      "linux": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "java-runtime-gamma"
+        }
       }
     },
-    {
-      "majorVersion": 16,
-      "ref": {
-        "type": "minecraft",
-        "version": "java-runtime-alpha"
+    "16": {
+      "mac": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "java-runtime-alpha"
+        },
+        "arm-64": {
+          "type": "minecraft",
+          "version": "java-runtime-alpha"
+        }
+      },
+      "windows": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "java-runtime-alpha"
+        }
+      },
+      "linux": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "java-runtime-alpha"
+        }
       }
     },
-    {
-      "majorVersion": 15,
-      "ref": {
-        "type": "minecraft",
-        "version": "java-runtime-alpha"
+    "15": {
+      "mac": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "java-runtime-alpha"
+        },
+        "arm-64": {
+          "type": "minecraft",
+          "version": "java-runtime-alpha"
+        }
+      },
+      "windows": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "java-runtime-alpha"
+        }
+      },
+      "linux": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "java-runtime-alpha"
+        }
       }
     },
-    {
-      "majorVersion": 14,
-      "ref": {
-        "type": "minecraft",
-        "version": "minecraft-java-exe"
+    "14": {
+      "mac": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "java-runtime-alpha"
+        },
+        "arm-64": {
+          "type": "minecraft",
+          "version": "java-runtime-alpha"
+        }
       },
-      "os": ["windows-x64"]
+      "windows": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "minecraft-java-exe"
+        }
+      },
+      "linux": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "java-runtime-alpha"
+        }
+      }
     },
-    {
-      "majorVersion": 13,
-      "ref": {
-        "type": "minecraft",
-        "version": "minecraft-java-exe"
+    "13": {
+      "mac": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "java-runtime-alpha"
+        },
+        "arm-64": {
+          "type": "minecraft",
+          "version": "java-runtime-alpha"
+        }
       },
-      "os": ["windows-x64"]
+      "windows": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "minecraft-java-exe"
+        }
+      },
+      "linux": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "java-runtime-alpha"
+        }
+      }
     },
-    {
-      "majorVersion": 12,
-      "ref": {
-        "type": "minecraft",
-        "version": "minecraft-java-exe"
+    "12": {
+      "mac": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "java-runtime-alpha"
+        },
+        "arm-64": {
+          "type": "minecraft",
+          "version": "java-runtime-alpha"
+        }
       },
-      "os": ["windows-x64"]
+      "windows": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "minecraft-java-exe"
+        }
+      },
+      "linux": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "java-runtime-alpha"
+        }
+      }
     },
-    {
-      "majorVersion": 11,
-      "ref": {
-        "type": "minecraft",
-        "version": "minecraft-java-exe"
+    "11": {
+      "mac": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "java-runtime-alpha"
+        },
+        "arm-64": {
+          "type": "minecraft",
+          "version": "java-runtime-alpha"
+        }
       },
-      "os": ["windows-x64"]
+      "windows": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "minecraft-java-exe"
+        }
+      },
+      "linux": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "java-runtime-alpha"
+        }
+      }
     },
-    {
-      "majorVersion": 10,
-      "ref": {
-        "type": "minecraft",
-        "version": "minecraft-java-exe"
+    "10": {
+      "mac": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "java-runtime-alpha"
+        },
+        "arm-64": {
+          "type": "minecraft",
+          "version": "java-runtime-alpha"
+        }
       },
-      "os": ["windows-x64"]
+      "windows": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "minecraft-java-exe"
+        }
+      },
+      "linux": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "java-runtime-alpha"
+        }
+      }
     },
-    {
-      "majorVersion": 9,
-      "ref": {
-        "type": "minecraft",
-        "version": "minecraft-java-exe"
+    "9": {
+      "mac": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "java-runtime-alpha"
+        },
+        "arm-64": {
+          "type": "minecraft",
+          "version": "java-runtime-alpha"
+        }
       },
-      "os": ["windows-x64"]
+      "windows": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "minecraft-java-exe"
+        }
+      },
+      "linux": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "java-runtime-alpha"
+        }
+      }
     },
-    {
-      "majorVersion": 8,
-      "ref": {
-        "type": "minecraft",
-        "version": "jre-legacy"
+    "8": {
+      "mac": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "jre-legacy"
+        },
+        "arm-64": {
+          "type": "minecraft",
+          "version": "jre-legacy"
+        }
       },
-      "os": ["windows-x64"]
+      "windows": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "jre-legacy"
+        }
+      },
+      "linux": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "jre-legacy"
+        }
+      }
     },
-    {
-      "majorVersion": 7,
-      "ref": {
-        "type": "minecraft",
-        "version": "jre-legacy"
+    "7": {
+      "mac": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "jre-legacy"
+        },
+        "arm-64": {
+          "type": "minecraft",
+          "version": "jre-legacy"
+        }
       },
-      "os": ["windows-x64"]
+      "windows": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "jre-legacy"
+        }
+      },
+      "linux": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "jre-legacy"
+        }
+      }
     },
-    {
-      "majorVersion": 6,
-      "ref": {
-        "type": "minecraft",
-        "version": "jre-legacy"
+    "6": {
+      "mac": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "jre-legacy"
+        },
+        "arm-64": {
+          "type": "minecraft",
+          "version": "jre-legacy"
+        }
       },
-      "os": ["windows-x64"]
+      "windows": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "jre-legacy"
+        }
+      },
+      "linux": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "jre-legacy"
+        }
+      }
     },
-    {
-      "majorVersion": 5,
-      "ref": {
-        "type": "minecraft",
-        "version": "jre-legacy"
+    "5": {
+      "mac": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "jre-legacy"
+        },
+        "arm-64": {
+          "type": "minecraft",
+          "version": "jre-legacy"
+        }
       },
-      "os": ["windows-x64"]
+      "windows": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "jre-legacy"
+        }
+      },
+      "linux": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "jre-legacy"
+        }
+      }
     },
-    {
-      "majorVersion": 4,
-      "ref": {
-        "type": "minecraft",
-        "version": "jre-legacy"
+    "4": {
+      "mac": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "jre-legacy"
+        },
+        "arm-64": {
+          "type": "minecraft",
+          "version": "jre-legacy"
+        }
       },
-      "os": ["windows-x64"]
+      "windows": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "jre-legacy"
+        }
+      },
+      "linux": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "jre-legacy"
+        }
+      }
     },
-    {
-      "majorVersion": 3,
-      "ref": {
-        "type": "minecraft",
-        "version": "jre-legacy"
+    "3": {
+      "mac": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "jre-legacy"
+        },
+        "arm-64": {
+          "type": "minecraft",
+          "version": "jre-legacy"
+        }
       },
-      "os": ["windows-x64"]
+      "windows": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "jre-legacy"
+        }
+      },
+      "linux": {
+        "x-64": {
+          "type": "minecraft",
+          "version": "jre-legacy"
+        }
+      }
     }
-  ]
+  }
 }
