@@ -1,0 +1,28 @@
+{
+  "$schema": "./schema/donation.schema.json",
+  "services": [
+    {
+      "id": "ofuse",
+      "name": "OFUSE",
+      "url": "https://ofuse.me/civiltt/letter",
+      "icon": "icons/ofuse.png",
+      "color": "#2882A7",
+      "description": {
+        "ja": "お好きな金額で，メッセージを添えて応援できます",
+        "en-US": "Donate any amount you like, along with a message"
+      },
+      "visible": true
+    },
+    {
+      "id": "githubSponsors",
+      "name": "GitHub Sponsors",
+      "url": "https://github.com/sponsors/CivilTT",
+      "color": "#BF3989",
+      "description": {
+        "ja": "GitHubアカウントで，毎月または1回限りの応援ができます",
+        "en-US": "Sponsor us monthly or once with your GitHub account"
+      },
+      "visible": false
+    }
+  ]
+}
