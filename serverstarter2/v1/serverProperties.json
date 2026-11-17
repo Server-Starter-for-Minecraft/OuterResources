@@ -82,11 +82,14 @@
   "properties": {
     "accepts-transfers": {
       "description": {
-        "ja": "プレイヤーが転送されたパケットを用いてサーバーにアクセスすることを許可する",
-        "en-US": "Allow servers to access them via transfer packets"
+        "ja": "他のサーバーから転送（/transfer コマンドなど）されてきたプレイヤーの接続を受け入れる",
+        "en-US": "Accept players transferred from other servers (e.g. by the /transfer command)"
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "24w03a"
+          },
           "type": "boolean",
           "default": false
         }
@@ -97,8 +100,8 @@
         "world"
       ],
       "description": {
-        "ja": "5秒以上の飛行を許可",
-        "en-US": "Allowed to fly for more than 5 seconds"
+        "ja": "サバイバルモードでの飛行（MODなどによる）を許可する（無効の場合，5秒以上空中に浮いているプレイヤーはキックされる）",
+        "en-US": "Allow flight in Survival mode (e.g. with mods). When disabled, players floating in the air for more than 5 seconds are kicked"
       },
       "definitions": [
         {
@@ -117,6 +120,46 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "to": "25w34b"
+          },
+          "type": "boolean",
+          "default": true
+        }
+      ]
+    },
+    "allowed-connection-ids": {
+      "groups": [
+        "network"
+      ],
+      "description": {
+        "ja": "接続を受け入れる接続ID（サーバーアドレスの最初の @ より前の部分）をカンマ区切りで指定（空欄の場合は制限しない，暗号化されないためセキュリティ目的には使わないこと）",
+        "en-US": "Comma-separated connection IDs (the part of the server address before the first @) to accept (no restriction when empty; not encrypted, so do not rely on it for security)"
+      },
+      "definitions": [
+        {
+          "minecraftVersion": {
+            "from": "26.4-snapshot-1"
+          },
+          "type": "string",
+          "default": ""
+        }
+      ]
+    },
+    "announce-player-achievements": {
+      "groups": [
+        "player"
+      ],
+      "description": {
+        "ja": "プレイヤーが実績を解除したときにチャットで通知する（1.12 以降はゲームルール announceAdvancements に置き換え）",
+        "en-US": "Announce in chat when a player earns an achievement (replaced by the announceAdvancements game rule in 1.12)"
+      },
+      "definitions": [
+        {
+          "minecraftVersion": {
+            "from": "1.7.2",
+            "to": "17w17b"
+          },
           "type": "boolean",
           "default": true
         }
@@ -132,6 +175,9 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "1.8.4"
+          },
           "type": "boolean",
           "default": true
         }
@@ -147,6 +193,9 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "1.7.5"
+          },
           "type": "boolean",
           "default": true
         }
@@ -159,6 +208,9 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "24w21a"
+          },
           "type": "string",
           "default": ""
         }
@@ -171,6 +223,9 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "26.2-pre-1"
+          },
           "type": "number",
           "default": 10,
           "min": 0,
@@ -185,6 +240,9 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "26.2-pre-1"
+          },
           "type": "number",
           "default": 10,
           "min": 0,
@@ -203,6 +261,9 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "18w48a"
+          },
           "type": "string",
           "default": "easy",
           "enum": [
@@ -210,6 +271,19 @@
             "easy",
             "normal",
             "hard"
+          ]
+        },
+        {
+          "minecraftVersion": {
+            "to": "18w47b"
+          },
+          "type": "string",
+          "default": "1",
+          "enum": [
+            "0",
+            "1",
+            "2",
+            "3"
           ]
         }
       ]
@@ -221,6 +295,9 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "25w34a"
+          },
           "type": "boolean",
           "default": false
         }
@@ -236,6 +313,10 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "1.4",
+            "to": "25w34b"
+          },
           "type": "boolean",
           "default": false
         }
@@ -248,8 +329,29 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "20w16a"
+          },
           "type": "boolean",
           "default": false
+        }
+      ]
+    },
+    "enable-legacy-status": {
+      "groups": [
+        "server"
+      ],
+      "description": {
+        "ja": "1.7より前のクライアントからのサーバー情報の問い合わせ（旧形式のステータス・Ping）に応答する",
+        "en-US": "Respond to server status requests (legacy status and ping) from clients older than 1.7"
+      },
+      "definitions": [
+        {
+          "minecraftVersion": {
+            "from": "26.4-snapshot-1"
+          },
+          "type": "boolean",
+          "default": true
         }
       ]
     },
@@ -258,8 +360,8 @@
         "rcon-query"
       ],
       "description": {
-        "ja": "GameSpy4の接続を許可",
-        "en-US": "GameSpy4 connection allowed"
+        "ja": "GameSpy4 プロトコルによるサーバー情報の問い合わせ（Query）を許可する",
+        "en-US": "Allow server information queries using the GameSpy4 protocol (Query)"
       },
       "definitions": [
         {
@@ -293,6 +395,9 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "20w18a"
+          },
           "type": "boolean",
           "default": true
         }
@@ -308,8 +413,19 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "1.19.1-pre2"
+          },
           "type": "boolean",
           "default": true
+        },
+        {
+          "minecraftVersion": {
+            "from": "22w17a",
+            "to": "1.19.1-rc1"
+          },
+          "type": "boolean",
+          "default": false
         }
       ]
     },
@@ -318,11 +434,14 @@
         "security"
       ],
       "description": {
-        "ja": "ホワイトリストによる管理を強制する",
-        "en-US": "Deny participation to non-whitelisted players"
+        "ja": "ホワイトリストの再読み込み時に，ホワイトリストに登録されていないオンラインのプレイヤーをキックする",
+        "en-US": "Kick online players who are not on the whitelist when the whitelist is reloaded"
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "18w19a"
+          },
           "type": "boolean",
           "default": false
         }
@@ -333,11 +452,14 @@
         "world"
       ],
       "description": {
-        "ja": "初期値を100とした際にエンティティの描画をどの範囲で行うかを割合で設定する",
-        "en-US": "Sets the range of entities to be drawn as a percentage when the initial value is 100"
+        "ja": "エンティティの情報をクライアントに送信する距離を，既定の距離に対する割合（%）で指定する",
+        "en-US": "Distance within which entities are sent to clients, as a percentage of the default distance"
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "20w18a"
+          },
           "type": "number",
           "default": 100,
           "min": 10,
@@ -356,6 +478,9 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "13w16a"
+          },
           "type": "boolean",
           "default": false
         }
@@ -366,11 +491,14 @@
         "command"
       ],
       "description": {
-        "ja": "コマンドの利用レベル（1~4で指定）",
-        "en-US": "Function permission level (set between 1 to 4)"
+        "ja": "関数（function）から実行するコマンドの権限レベル（1~4で指定）",
+        "en-US": "Permission level of commands run by functions (set between 1 to 4)"
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "1.14.4-pre4"
+          },
           "type": "number",
           "default": 2,
           "min": 1,
@@ -390,6 +518,9 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "18w48a"
+          },
           "type": "string",
           "default": "survival",
           "enum": [
@@ -397,6 +528,19 @@
             "creative",
             "adventure",
             "spectator"
+          ]
+        },
+        {
+          "minecraftVersion": {
+            "to": "18w47b"
+          },
+          "type": "string",
+          "default": "0",
+          "enum": [
+            "0",
+            "1",
+            "2",
+            "3"
           ]
         }
       ]
@@ -426,8 +570,19 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "21w17a"
+          },
           "type": "string",
           "default": "{}"
+        },
+        {
+          "minecraftVersion": {
+            "from": "1.4",
+            "to": "21w16a"
+          },
+          "type": "string",
+          "default": ""
         }
       ]
     },
@@ -451,13 +606,52 @@
         "player"
       ],
       "description": {
-        "ja": "オンラインのプレイヤーを隠す",
-        "en-US": "Hide online players"
+        "ja": "サーバーの選択画面に，オンラインのプレイヤーの名前を表示しない",
+        "en-US": "Do not show the names of online players on the server selection screen"
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "21w44a"
+          },
           "type": "boolean",
           "default": false
+        }
+      ]
+    },
+    "initial-disabled-packs": {
+      "groups": [
+        "generator"
+      ],
+      "description": {
+        "ja": "ワールドの新規作成時に自動で有効にしないデータパックをカンマ区切りで指定（作成済みのワールドには反映されない）",
+        "en-US": "Comma-separated data packs not to enable automatically when the world is created (no effect on existing worlds)"
+      },
+      "definitions": [
+        {
+          "minecraftVersion": {
+            "from": "22w42a"
+          },
+          "type": "string",
+          "default": ""
+        }
+      ]
+    },
+    "initial-enabled-packs": {
+      "groups": [
+        "generator"
+      ],
+      "description": {
+        "ja": "ワールドの新規作成時に有効にするデータパックをカンマ区切りで指定（実験的機能のパックは明示が必要，作成済みのワールドには反映されない）",
+        "en-US": "Comma-separated data packs to enable when the world is created (feature packs must be listed explicitly; no effect on existing worlds)"
+      },
+      "definitions": [
+        {
+          "minecraftVersion": {
+            "from": "22w42a"
+          },
+          "type": "string",
+          "default": "vanilla"
         }
       ]
     },
@@ -486,6 +680,24 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "22w11a"
+          },
+          "type": "string",
+          "default": "minecraft:normal",
+          "enum": [
+            "minecraft:normal",
+            "minecraft:flat",
+            "minecraft:large_biomes",
+            "minecraft:amplified",
+            "minecraft:single_biome_surface"
+          ]
+        },
+        {
+          "minecraftVersion": {
+            "from": "18w48a",
+            "to": "1.18.2"
+          },
           "type": "string",
           "default": "default",
           "enum": [
@@ -495,16 +707,34 @@
             "amplified",
             "buffet"
           ]
+        },
+        {
+          "minecraftVersion": {
+            "to": "18w47b"
+          },
+          "type": "string",
+          "default": "DEFAULT",
+          "enum": [
+            "DEFAULT",
+            "FLAT",
+            "LARGEBIOMES",
+            "AMPLIFIED",
+            "CUSTOMIZED",
+            "BUFFET"
+          ]
         }
       ]
     },
     "log-ips": {
       "description": {
-        "ja": "Falseに設定すると、プレイヤーがゲームに参加したときに、プレイヤーのIPがログに含まれないようにする",
-        "en-US": "When set to false, will prevent player IPs from being included in the log when players join the game"
+        "ja": "プレイヤーがサーバーに参加した際に，プレイヤーのIPアドレスをログに記録する",
+        "en-US": "Record the IP address of players in the log when they join the server"
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "23w31a"
+          },
           "type": "boolean",
           "default": true
         }
@@ -517,6 +747,9 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "25w42a"
+          },
           "type": "string",
           "default": ""
         }
@@ -529,6 +762,9 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "25w35a"
+          },
           "type": "boolean",
           "default": false
         }
@@ -541,6 +777,9 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "25w35a"
+          },
           "type": "string",
           "default": "localhost"
         }
@@ -553,8 +792,22 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "25w37a"
+          },
           "type": "number",
           "default": 0,
+          "min": 0,
+          "max": 65535,
+          "step": 1
+        },
+        {
+          "minecraftVersion": {
+            "from": "25w35a",
+            "to": "25w36b"
+          },
+          "type": "number",
+          "default": 25585,
           "min": 0,
           "max": 65535,
           "step": 1
@@ -568,6 +821,9 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "25w37a"
+          },
           "type": "string",
           "default": ""
         }
@@ -580,6 +836,9 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "25w37a"
+          },
           "type": "boolean",
           "default": true
         }
@@ -592,6 +851,9 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "25w37a"
+          },
           "type": "string",
           "default": ""
         }
@@ -604,6 +866,9 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "25w37a"
+          },
           "type": "string",
           "default": ""
         }
@@ -619,6 +884,9 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "to": "1.16.5"
+          },
           "type": "number",
           "default": 256,
           "step": 8
@@ -635,6 +903,9 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "22w11a"
+          },
           "type": "number",
           "default": 1000000,
           "step": 1
@@ -664,11 +935,14 @@
         "command"
       ],
       "description": {
-        "ja": "サーバーが動作不能になってから強制終了するまでの時間をミリ秒で指定（-1で強制終了を無効化）",
-        "en-US": "Time in milliseconds between server inoperability and forced shutdown (-1 to disable forced shutdown)"
+        "ja": "1ティックの処理にかかる時間がこの値（ミリ秒）を超えた場合に，サーバーが応答しないとみなして強制終了する（-1で強制終了を無効化）",
+        "en-US": "If a single tick takes longer than this (in milliseconds), the server is considered unresponsive and is shut down (-1 to disable)"
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "14w31a"
+          },
           "type": "number",
           "default": 60000,
           "min": -1,
@@ -682,11 +956,14 @@
         "generator"
       ],
       "description": {
-        "ja": "ワールドのサイズを半径で指定",
-        "en-US": "World size specified by radius"
+        "ja": "ワールドボーダーを広げられる最大の半径をブロック数で指定",
+        "en-US": "Maximum radius (in blocks) to which the world border can be expanded"
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "14w18a"
+          },
           "type": "number",
           "default": 29999984,
           "min": 1,
@@ -715,11 +992,14 @@
         "network"
       ],
       "description": {
-        "ja": "ネットワークの圧縮度合いを整数で指定",
-        "en-US": "Specifies the degree of network compression as an integer"
+        "ja": "このサイズ（バイト）以上のパケットを圧縮して送信する（-1で圧縮しない）",
+        "en-US": "Packets of this size (in bytes) or larger are compressed (-1 to disable compression)"
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "14w28a"
+          },
           "type": "number",
           "default": 256,
           "min": -1,
@@ -752,6 +1032,9 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "13w18a"
+          },
           "type": "number",
           "default": 4,
           "min": 0,
@@ -767,6 +1050,9 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "24w33a"
+          },
           "type": "number",
           "default": 60,
           "step": 1
@@ -778,11 +1064,14 @@
         "player"
       ],
       "description": {
-        "ja": "指定した秒数（＝整数値）放置するとサーバーからキックされる",
-        "en-US": "If left unattended for a specified number of seconds (= an integer value), the server will kick the user"
+        "ja": "指定した時間（分）操作のないプレイヤーをサーバーからキックする（0でキックしない）",
+        "en-US": "Kick players who have been idle for the specified number of minutes (0 to never kick)"
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "1.6.3"
+          },
           "type": "number",
           "default": 0,
           "min": 0,
@@ -795,11 +1084,14 @@
         "network"
       ],
       "description": {
-        "ja": "falseの時にVPNやプロキシからの接続を許可する",
-        "en-US": "Allow connection from VPN or Proxy when set to False"
+        "ja": "Mojangの認証サーバーへの接続元と異なるネットワークから接続してきたプレイヤー（VPNやプロキシの利用など）を拒否する",
+        "en-US": "Reject players connecting from a different network than the one used to authenticate with Mojang (e.g. via a VPN or proxy)"
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "16w38a"
+          },
           "type": "boolean",
           "default": false
         }
@@ -812,6 +1104,10 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "22w19a",
+            "to": "1.19.2"
+          },
           "type": "boolean",
           "default": false
         }
@@ -827,6 +1123,9 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "to": "25w34b"
+          },
           "type": "boolean",
           "default": true
         }
@@ -855,11 +1154,14 @@
         "network"
       ],
       "description": {
-        "ja": "クライアントが１秒間に送信できる最大パケット量を指定",
-        "en-US": "Specifies the maximum amount of packets a client can send per second"
+        "ja": "クライアントが1秒間に送信できる最大のパケット数を指定（超えたプレイヤーはキックされる，0で制限しない）",
+        "en-US": "Maximum number of packets a client can send per second; players exceeding it are kicked (0 to disable)"
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "20w28a"
+          },
           "type": "number",
           "default": 0,
           "min": 0,
@@ -907,6 +1209,9 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "24w04a"
+          },
           "type": "string",
           "default": "deflate",
           "enum": [
@@ -927,6 +1232,28 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "13w36a"
+          },
+          "type": "string",
+          "default": ""
+        }
+      ]
+    },
+    "resource-pack-hash": {
+      "groups": [
+        "resourcepack"
+      ],
+      "description": {
+        "ja": "サーバーリソースパックのSHA-1ハッシュ値（resource-pack-sha1 の旧名）",
+        "en-US": "SHA-1 hash of the server resource pack (old name of resource-pack-sha1)"
+      },
+      "definitions": [
+        {
+          "minecraftVersion": {
+            "from": "14w31a",
+            "to": "1.8.9"
+          },
           "type": "string",
           "default": ""
         }
@@ -942,6 +1269,9 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "1.20.3-pre1"
+          },
           "type": "string",
           "default": ""
         }
@@ -952,11 +1282,14 @@
         "resourcepack"
       ],
       "description": {
-        "ja": "サーバーリソースパックのプロンプト",
-        "en-US": "Prompt of server resource pack"
+        "ja": "サーバーリソースパックの導入を求める画面に表示するメッセージ",
+        "en-US": "Message shown on the screen asking players to use the server resource pack"
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "21w15a"
+          },
           "type": "string",
           "default": ""
         }
@@ -967,11 +1300,14 @@
         "resourcepack"
       ],
       "description": {
-        "ja": "サーバーリソースパックのハッシュ値",
-        "en-US": "Hash value of the server resource pack"
+        "ja": "サーバーリソースパックのSHA-1ハッシュ値（リソースパックの検証に使用）",
+        "en-US": "SHA-1 hash of the server resource pack (used to verify the pack)"
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "15w49a"
+          },
           "type": "string",
           "default": ""
         }
@@ -987,6 +1323,9 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "20w45a"
+          },
           "type": "boolean",
           "default": false
         }
@@ -997,8 +1336,8 @@
         "network"
       ],
       "description": {
-        "ja": "サーバーを立てるIPアドレス",
-        "en-US": "IP address to set up a server"
+        "ja": "サーバーが接続を待ち受けるIPアドレス（空欄の場合はすべてのアドレスで待ち受ける）",
+        "en-US": "IP address the server listens on (listens on all addresses when empty)"
       },
       "definitions": [
         {
@@ -1030,11 +1369,14 @@
         "world"
       ],
       "description": {
-        "ja": "サーバー上でエンティティをシミュレーションする範囲を設定する",
-        "en-US": "Sets the range of entities to be simulated"
+        "ja": "プレイヤーの周囲でエンティティやブロックを動作させる（ティックを処理する）範囲をチャンク数で指定",
+        "en-US": "Distance (in chunks) around players within which entities and blocks are updated (ticked)"
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "21w38a"
+          },
           "type": "number",
           "default": 10,
           "min": 3,
@@ -1050,6 +1392,9 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "to": "21w42a"
+          },
           "type": "boolean",
           "default": true
         }
@@ -1065,6 +1410,9 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "to": "1.21.1"
+          },
           "type": "boolean",
           "default": true
         }
@@ -1080,6 +1428,9 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "to": "25w34b"
+          },
           "type": "boolean",
           "default": true
         }
@@ -1095,6 +1446,9 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "to": "1.21.1"
+          },
           "type": "boolean",
           "default": true
         }
@@ -1105,15 +1459,36 @@
         "world"
       ],
       "description": {
-        "ja": "      ブロック・オブジェクトの設置・破壊が禁止される範囲をスポーン中心からの半径で指定（整数値）      ただし，OP権限を有するプレイヤーには無効",
-        "en-US": "Specifies the radius from the center of the spawn (integer value) within which blocks and objects are prohibited from being placed or destroyed.      However, this is not valid for players with OP."
+        "ja": "ブロックの設置・破壊が禁止される範囲をスポーン地点からの半径で指定（0で無効，OP権限を有するプレイヤーには適用されない）",
+        "en-US": "Radius around the world spawn within which blocks cannot be placed or broken (0 to disable; does not apply to players with OP)"
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "1.4"
+          },
           "type": "number",
           "default": 16,
           "min": 0,
           "step": 1
+        }
+      ]
+    },
+    "status-contact-details": {
+      "groups": [
+        "server"
+      ],
+      "description": {
+        "ja": "サーバーのステータス情報に含める管理者の連絡先（自由な形式のテキスト，空欄の場合は送信しない）",
+        "en-US": "Contact details of the server owner included in the server status (free text; not sent when empty)"
+      },
+      "definitions": [
+        {
+          "minecraftVersion": {
+            "from": "26.4-snapshot-1"
+          },
+          "type": "string",
+          "default": ""
         }
       ]
     },
@@ -1124,6 +1499,9 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "25w35a"
+          },
           "type": "number",
           "default": 0,
           "min": 0,
@@ -1141,6 +1519,9 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "20w14a"
+          },
           "type": "boolean",
           "default": true
         }
@@ -1153,6 +1534,9 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "1.16.4-pre1"
+          },
           "type": "string",
           "default": ""
         }
@@ -1165,11 +1549,32 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "24w33a"
+          },
           "type": "number",
           "default": 0,
           "min": 0,
           "max": 1,
           "step": 1
+        }
+      ]
+    },
+    "texture-pack": {
+      "groups": [
+        "resourcepack"
+      ],
+      "description": {
+        "ja": "接続したプレイヤーに使用を促すサーバーテクスチャパックのURL（resource-pack の前身）",
+        "en-US": "URL of the server texture pack offered to players who join (predecessor of resource-pack)"
+      },
+      "definitions": [
+        {
+          "minecraftVersion": {
+            "to": "1.6.4"
+          },
+          "type": "string",
+          "default": ""
         }
       ]
     },
@@ -1183,6 +1588,9 @@
       },
       "definitions": [
         {
+          "minecraftVersion": {
+            "from": "1.8.1-pre1"
+          },
           "type": "boolean",
           "default": true
         }
@@ -1193,8 +1601,8 @@
         "world"
       ],
       "description": {
-        "ja": "チャンク単位の描画距離",
-        "en-US": "View distance by a chunk"
+        "ja": "サーバーがクライアントに送信するワールドの範囲（描画距離）をチャンク数で指定",
+        "en-US": "Distance (in chunks) of the world the server sends to clients (view distance)"
       },
       "definitions": [
         {
@@ -1215,6 +1623,13 @@
         "en-US": "Manage player login by the white list"
       },
       "definitions": [
+        {
+          "minecraftVersion": {
+            "from": "26.3-snapshot-2"
+          },
+          "type": "boolean",
+          "default": true
+        },
         {
           "type": "boolean",
           "default": false
