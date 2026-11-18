@@ -1,0 +1,91 @@
+# 配布ファイルが JSON Schema を満たし，参照する画像やタブが存在することを確認する
+# main へのマージで全ユーザーに公開されるため，PR ではこのチェックが通ってからマージする
+name: Validate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Validate JSON files with their JSON Schema
+        run: |
+          set -eu
+          # serverstarter2/v{n}/{name}.json を serverstarter2/v{n}/schema/{name}.schema.json で検証する
+          for file in serverstarter2/v*/*.json; do
+            dir=$(dirname "$file")
+            name=$(basename "$file" .json)
+            schema="$dir/schema/$name.schema.json"
+            if [ ! -f "$schema" ]; then
+              echo "::error file=$file::JSON Schema が見つかりません ($schema)"
+              exit 1
+            fi
+            npx --yes -p ajv-cli@5 -p ajv-formats@3 ajv validate \
+              --spec=draft2020 --strict=false \
+              -c ajv-formats -s "$schema" -d "$file"
+          done
+
+      - name: Check that referenced icons exist
+        run: |
+          set -eu
+          # donation.json の icon（相対パス）が実在することを確認する
+          for file in serverstarter2/v*/donation.json; do
+            dir=$(dirname "$file")
+            jq -r '.services[].icon // empty | select(test("^(https?:|data:)") | not)' "$file" |
+              while IFS= read -r icon; do
+                if [ ! -f "$dir/$icon" ]; then
+                  echo "::error file=$file::アイコンが見つかりません ($dir/$icon)"
+                  exit 1
+                fi
+              done
+          done
+
+      - name: Check that ids are unique
+        run: |
+          set -eu
+          # 寄付サービスの id とタブの id が重複していないことを確認する（重複したものはアプリで無視される）
+          for file in serverstarter2/v*/donation.json; do
+            dup=$(jq -r '[.services[].id] | group_by(.) | map(select(length > 1) | .[0]) | .[]' "$file")
+            if [ -n "$dup" ]; then
+              echo "::error file=$file::寄付サービスの id が重複しています ($dup)"
+              exit 1
+            fi
+          done
+          for file in serverstarter2/v*/serverProperties.json; do
+            dup=$(jq -r '[(.groups // [])[].id] | group_by(.) | map(select(length > 1) | .[0]) | .[]' "$file")
+            if [ -n "$dup" ]; then
+              echo "::error file=$file::タブの id が重複しています ($dup)"
+              exit 1
+            fi
+          done
+
+      - name: Check that property groups refer to defined tabs
+        run: |
+          set -eu
+          # プロパティの groups が，タブの一覧（groups）か予約された「その他」（other）を指していることを確認する
+          # （書き間違えたタブは表示されず，プロパティは「その他」に表示されるため）
+          for file in serverstarter2/v*/serverProperties.json; do
+            unknown=$(jq -r '
+              ([(.groups // [])[].id] + ["other"]) as $ids
+              | select((.groups // []) | length > 0)
+              | .properties | to_entries[]
+              | .key as $key | (.value.groups // [])[]
+              | select(. as $g | $ids | index($g) | not)
+              | "\($key): \(.)"' "$file")
+            if [ -n "$unknown" ]; then
+              echo "::error file=$file::タブの一覧に無い groups が指定されています: $unknown"
+              exit 1
+            fi
+          done
